@@ -10,5 +10,8 @@ WORKDIR /code
 COPY requirements.txt /code/
 
 # instalando coisas como jungle
+RUN apt-get update
 RUN pip install -r requirements.txt
+RUN apt-get install -y python3-dev graphviz libgraphviz-dev pkg-config
+RUN pip install pygraphviz
 COPY . /code/

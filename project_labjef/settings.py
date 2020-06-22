@@ -25,7 +25,9 @@ SECRET_KEY = 'bg)j)3(2jllsrc^f@1&f^sk5w%#nt68^6bt%@u8q1-2gdw9=9z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '0.0.0.0',
+]
 
 
 # Application definition
@@ -37,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'site_labjef.apps.SiteLabjefConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +126,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
