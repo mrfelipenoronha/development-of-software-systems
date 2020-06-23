@@ -1,7 +1,14 @@
 from django.contrib import admin
-
-# Register your models here.
-from .models import Pessoa, Usuario, Perfil, Acessa
+from .models import (
+    Pessoa, 
+    Usuario, 
+    Perfil, 
+    Servico, 
+    Exame, 
+    Acessa,
+    # Pode_fazer,
+    # Usa,
+    )
 
 class PerfilInline(admin.TabularInline):
     model = Acessa
@@ -13,3 +20,5 @@ class UsuarioAdmin(admin.ModelAdmin):
 admin.site.register(Pessoa)
 admin.site.register(Usuario, UsuarioAdmin)
 admin.site.register(Perfil)
+admin.site.register(Servico)
+admin.site.register(Exame)

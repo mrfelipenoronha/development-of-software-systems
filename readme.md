@@ -26,6 +26,7 @@
 - Adicionei um pacote no dockerfile (pra gerar a visualização do banco), então tive que dar um `docker-compose build`
 - Executei `docker-compose run web python manage.py migrate` pra fazer a migração inicial do banco, setando umas tables que são usadas pelo django, é o que ele fala pra ser feito [aqui](https://docs.djangoproject.com/en/3.0/intro/tutorial02/#database-setup)
 - Criei as models em `site_labjef/models.py`
+    - Pessoa, Perfil, Usuario, Acessa
     - Dani, decida se deixa ou não os tabs la no model
     - Eu dei uma olhada [aqui](https://docs.djangoproject.com/en/3.0/topics/db/models/) pra ver certinhos os tipos dentro das models
     - Eu disse ao django que tinhamos o aplicativo site_labjeft ([segui isso](https://docs.djangoproject.com/en/3.0/intro/tutorial02/#activating-models)). Para isso eu modifiquei o arquivo `project_labjef/settings.py`
@@ -36,3 +37,18 @@
     - Usuario e senha são `admin`, basta acessar [http://0.0.0.0:8000/admin/](http://0.0.0.0:8000/admin/)
     - Segui [esse guia aqui](https://docs.djangoproject.com/en/3.0/intro/tutorial02/#introducing-the-django-admin)
     - Fiz umas alterações no `site_labjef/admin.py`, não sei muito bem o que fiz, mas aparentemente funciona
+
+## Coisas feitas hoje (23/06)
+
+- Buildei, fiz o migrate, permiti acesso ao admin
+- Continuação da criação dos models em `site_labjef/models.py`
+    - Servico, Exame, Pode_Fazer, Usa
+    - Tirei os tabs
+    - PF PASSOU POR AQUI KKK: não passamos mais de 89 colunas
+    - Rodei `makemigrations` e `migrate`
+    - Gerei a imagem do banco pelo pygraphviz no arquivo `relational2.png`
+    - Mudanças no `admin.py`
+- Questões
+    - `Pessoa` é classe abstrata? -> Herança de Pessoa pra Usuario e Paciente (?)
+    - Não entendi muito bem como funciona a `admin.py` pra relacionamentos, só registrei as entidades
+
