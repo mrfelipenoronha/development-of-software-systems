@@ -52,3 +52,10 @@
     - `Pessoa` é classe abstrata? -> Herança de Pessoa pra Usuario e Paciente (?)
     - Não entendi muito bem como funciona a `admin.py` pra relacionamentos, só registrei as entidades
 
+## Coisas feitas hoje (24/06)
+- Arrumei o admin.py pra exibir as colunas certinho
+- Arrumei o model do usuário pra ser OneToOneField
+- Arrumei alguns models pra incluir campos de ManyToMany
+- Problemas:
+    - Meu migrate está com uns problemas por causa do banco que eu criei, não parece estar relacionado ao Docker. Mas qualquer coisa é só voltar atrás nos commits.
+    - Por causa disso, só estou colocando no GitHub o `admin.py`, o `model.py` e o `README.md`
