@@ -56,6 +56,4 @@
 - Arrumei o admin.py pra exibir as colunas certinho
 - Arrumei o model do usuário pra ser OneToOneField
 - Arrumei alguns models pra incluir campos de ManyToMany
-- Problemas:
-    - Meu migrate está com uns problemas por causa do banco que eu criei, não parece estar relacionado ao Docker. Mas qualquer coisa é só voltar atrás nos commits.
-    - Por causa disso, só estou colocando no GitHub o `admin.py`, o `model.py` e o `README.md`
+- Rodei `makemigrations` e `migrate`
