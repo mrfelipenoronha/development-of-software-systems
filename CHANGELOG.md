@@ -1,25 +1,4 @@
-# Trabalho de merda
-
-## Docker setupping
-
-- Para criar o docker com django/postgressql usei [este tutorial](https://docs.docker.com/compose/django/).
-- Primeiro comando executado `sudo docker-compose run web django-admin startproject project_labjef .`, com isso criei o projeto em si
-- Pra rodar o bixo basta invocar `docker-compose up` e acessar [http://0.0.0.0:8000/](http://0.0.0.0:8000/)
-- Sempre que quisermos invocar algum comando do _django_ podemos fazer com `docker-compose run web <comando>`
-- Invocar `docker-compose build` se eu quiser instalar mais alguma porrinha do _requirements.txt_
-- (talvez não seja tão seguro rodar isso) Tem que dar `sudo chown -R $USER:$USER .` pra arrumar as permissões das coisas que são criadas dentro do docker
-
-## Django stuff 
-
-- Aqui comecei a seguir [o tutorial do próprio João Goulart](https://docs.djangoproject.com/en/3.0/intro/tutorial01/).
-- Para criar o site dentro do projeto, executei `docker-compose run web python manage.py startapp site_labjef`
-- Talves [este link tenha que ser visitado depois com os models](https://stackoverflow.com/questions/33992867/how-do-you-perform-django-database-migrations-when-using-docker-compose)
-
-## DB stuff
-
-- Inserindo na classe pai caso ela não exista vai ser feito [usando isso](https://stackoverflow.com/questions/4069718/postgres-insert-if-does-not-exist-already)
-- A herança [pode ser vista aqui](https://www.postgresql.org/docs/10/tutorial-inheritance.html)
-- Talvez oq a gente va fazer é chamado de [partitioning](https://zaiste.net/posts/table-inheritance-partitioning-postgresql/)
+# CHANGELOG
 
 ## Coisas feitas hoje (22/06)
 
@@ -32,7 +11,7 @@
     - Eu disse ao django que tinhamos o aplicativo site_labjeft ([segui isso](https://docs.djangoproject.com/en/3.0/intro/tutorial02/#activating-models)). Para isso eu modifiquei o arquivo `project_labjef/settings.py`
     - Criei as migrações a serem feitas com `docker-compose run web python manage.py makemigrations site_labjef`
     - Dei um _commit_ na migração criada com `docker-compose run web python manage.py migrate`
-    - Executei `docker-compose run web python manage.py graph_models --pygraphviz -a -g -o relational.png` para gerar a imagem do banco
+    - Executei `docker-compose run web python manage.py graph_models site_labjef -o relational.png` para gerar a imagem do banco
 - Criei um superusuario com o comando `docker-compose run web python manage.py createsuperuser`
     - Usuario e senha são `admin`, basta acessar [http://0.0.0.0:8000/admin/](http://0.0.0.0:8000/admin/)
     - Segui [esse guia aqui](https://docs.djangoproject.com/en/3.0/intro/tutorial02/#introducing-the-django-admin)
@@ -52,7 +31,8 @@
     - `Pessoa` é classe abstrata? -> Herança de Pessoa pra Usuario e Paciente (?)
     - Não entendi muito bem como funciona a `admin.py` pra relacionamentos, só registrei as entidades
 
-## Coisas feitas hoje (24/06)
+## Coisas feitas hoje (24/06 madruga)
+
 - Arrumei o admin.py pra exibir as colunas certinho
 - Arrumei o model do usuário pra ser OneToOneField
 - Arrumei alguns models pra incluir campos de ManyToMany
@@ -74,3 +54,19 @@
     ```
     - Vê se vc consegue replicar esse erro aí, ou se é só no meu pc que essa caca ocorreu
 
+## Coisas feitas hoje (24/06)
+
+- Completei os models com as tabelas que faltavam do modelo físico
+    - Mudei o metodo usado para as restrições unique
+    - Complementei as `__str__` das classes
+    - Rodei `makemigration` e o `migrate`
+    - Imagem nova do banco ja pode ser vista em `relational.png`
+        - Descobri que o comando `docker-compose run web python manage.py graph_models site_labjef -o relational.png` é muito superior
+- Resetei o DB
+    - comentei todas as nossas linhas de codigo de `models.py` e `admin.py`, fiz e commitei a migração
+    - apaguei as migrations da pasta migrations
+    - descomentei as coisas comentadas, e fiz a migração
+    - Executei ` docker-compose run web python manage.py sqlmigrate site_labjef 0001 > oi.sql` para gerar um arquivo sql da criação do banco, so pra conferir que tudo tava certo
+    - Obviamente não tava -
+        - Complemente o atributo `blank` com `null`
+        - Algumas colunas ficaram com nome estranho, tive que mudar isso no script

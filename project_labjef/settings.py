@@ -128,6 +128,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 GRAPH_MODELS = {
-  'all_applications': True,
   'group_models': True,
 }
