@@ -3,10 +3,7 @@ from .models import (
     Usuario, 
     Perfil, 
     Servico, 
-    Exame, 
-    Acessa,
-    Pode_fazer,
-    Usa,
+    Exame
     )
 
 class AcessoInline(admin.TabularInline):

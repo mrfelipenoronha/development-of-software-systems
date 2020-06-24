@@ -57,3 +57,20 @@
 - Arrumei o model do usuário pra ser OneToOneField
 - Arrumei alguns models pra incluir campos de ManyToMany
 - Rodei `makemigrations` e `migrate`
+- Gerei a imagem do banco pelo pygraphviz no arquivo `relational2.png`
+- Arrumei o visuzalição e o plural de Perfil
+- Problemas no banco:
+    - Não é possível visualizar/editar/remover um perfil nem um serviço. Nem criar um deles com o campo `pode_fazer` preenchido.   
+    ``` 
+        ProgrammingError at /admin/site_labjef/perfil/2/change/
+            relation "site_labjef_pode_fazer" does not exist
+            LINE 1: ...d", "site_labjef_pode_fazer"."id_servico_id" FROM "site_labj...
+    ```
+
+    ``` 
+        ProgrammingError at /admin/site_labjef/servico/add/
+            relation "site_labjef_pode_fazer" does not exist
+            LINE 1: SELECT (1) AS "a" FROM "site_labjef_pode_fazer" WHERE ("site...
+    ```
+    - Vê se vc consegue replicar esse erro aí, ou se é só no meu pc que essa caca ocorreu
+

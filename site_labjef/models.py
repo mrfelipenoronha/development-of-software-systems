@@ -14,7 +14,7 @@ class Exame(models.Model):
 # relação SERVIÇO
 class Servico(models.Model):
     CLASSES = [
-        ('V', 'visuzalição'),
+        ('V', 'visualização'),
         ('I', 'inserção'),
         ('A', 'alteração'),
         ('R', 'remoção'),
@@ -50,6 +50,9 @@ class Perfil(models.Model):
     data_criacao = models.DateField(blank=True)
     tipo = models.CharField(max_length=255)
     servicos = models.ManyToManyField(Servico, through='Pode_fazer')
+
+    class Meta:
+        verbose_name_plural = "perfis"
 
     def __str__(self):
         return f"{self.codigo}, {self.tipo}"
@@ -109,4 +112,3 @@ class Usa(models.Model):
             fields=['id_servico', 'id_exame'],
             name='unique_servico_exame')
         ]
-        
