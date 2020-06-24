@@ -1,4 +1,4 @@
-"""project_labjef URL Configuration
+"""project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
@@ -17,6 +17,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('site_labjef/', include('site_labjef.urls')),
+    path('laboratorio/', include('laboratorio.urls')),
     path('admin/', admin.site.urls)
 ]
