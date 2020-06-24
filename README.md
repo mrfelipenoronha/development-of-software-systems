@@ -1,6 +1,6 @@
-# Trabalho de merda
+# Laboratory web application
 
-# aqui começa o readme real oficial
+This project is made for the discipline MAC0350 Introduction to the Development of Software Systems @ IME-USP 2020. We modeled a complete database scheme for a laboratory and used the [Django framework](https://www.djangoproject.com/) to build a web application for it.
 
 ## How to setup docker
 
@@ -12,27 +12,9 @@
 
 - Additionally you can run `cat ./data.sql | docker exec -i /labjef_db_1 psql -U postgres -d postgres` to populate the database with default data.
 
+## Visualizing database
+
 ![relational model](relational.png)
 
-# aqui termina o readme real oficial
-
-## Docker setupping
-
-- Para criar o docker com django/postgressql usei [este tutorial](https://docs.docker.com/compose/django/).
-- Primeiro comando executado `sudo docker-compose run web django-admin startproject project .`, com isso criei o projeto em si
-- Pra rodar o bixo basta invocar `docker-compose up` e acessar [http://0.0.0.0:8000/](http://0.0.0.0:8000/)
-- Sempre que quisermos invocar algum comando do _django_ podemos fazer com `docker-compose run web <comando>`
-- Invocar `docker-compose build` se eu quiser instalar mais alguma porrinha do _requirements.txt_
-- (talvez não seja tão seguro rodar isso) Tem que dar `sudo chown -R $USER:$USER .` pra arrumar as permissões das coisas que são criadas dentro do docker
-
-## Django stuff 
-
-- Aqui comecei a seguir [o tutorial do próprio João Goulart](https://docs.djangoproject.com/en/3.0/intro/tutorial01/).
-- Para criar o site dentro do projeto, executei `docker-compose run web python manage.py startapp laboratorio`
-- Talves [este link tenha que ser visitado depois com os models](https://stackoverflow.com/questions/33992867/how-do-you-perform-django-database-migrations-when-using-docker-compose)
-
-## DB stuff
-
-- Inserindo na classe pai caso ela não exista vai ser feito [usando isso](https://stackoverflow.com/questions/4069718/postgres-insert-if-does-not-exist-already)
-- A herança [pode ser vista aqui](https://www.postgresql.org/docs/10/tutorial-inheritance.html)
-- Talvez oq a gente va fazer é chamado de [partitioning](https://zaiste.net/posts/table-inheritance-partitioning-postgresql/)
+- To generate the SQL script of the database creation run `docker-compose run web python manage.py sqlmigrate laboratorio 0001 > create_database.sql`
+- To generate a relational model of the database tables run `docker-compose run web python manage.py graph_models laboratorio -o relational.png`

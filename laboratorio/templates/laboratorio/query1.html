@@ -1,0 +1,31 @@
+<h1>Listando todos os exames realizados</h1>
+
+<p>Exames:</p>
+
+{% if query1_result_list %}
+  <p>Total: {{query1_result_list | length}}</p>
+  
+  <table border="1">
+    <tr>
+      <th> id_exame</th>
+      <th> tipo</th>
+      <th> cpf</th>
+      <th> nome</th>
+      <th> data solicitação</th>
+      <th> data realização</th>
+    </tr>
+    {% for row in query1_result_list %}
+    <tr>
+      <td>{{row.id_exame}}</td>
+      <td>{{row.tipo}}</td>
+      <td>{{row.cpf}}</td>
+      <td>{{row.nome}}</td>
+      <td>{{row.data_solicitacao}}</td>
+      <td>{{row.data_realizacao}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% else %}
+  <p>Sem resultados</p>
+{% endif %}

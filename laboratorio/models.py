@@ -12,7 +12,7 @@ class Pessoa(models.Model):
     endereco = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
-        return f"nome:{self.nome}"
+        return f"{self.nome}"
 
 class Usuario(models.Model):
     id_usuario = models.OneToOneField(
@@ -34,7 +34,7 @@ class Usuario(models.Model):
     perfis = models.ManyToManyField('Perfil', through='Acessa')
 
     def __str__(self):
-        return f"login:{self.login}"
+        return f"{self.login}"
 
 class Paciente(models.Model):
     id_paciente = models.OneToOneField(
@@ -45,7 +45,7 @@ class Paciente(models.Model):
     )
 
     def __str__(self):
-        return f"id:{self.id_paciente}"
+        return f"{self.id_paciente}"
 
 class Perfil(models.Model):
     id_perfil = models.IntegerField(primary_key=True)
@@ -58,7 +58,7 @@ class Perfil(models.Model):
         verbose_name_plural = "perfis"
 
     def __str__(self):
-        return f"codigo:{self.codigo} tipo:{self.tipo}"
+        return f"{self.codigo} ({self.tipo})"
 
 class Acessa(models.Model):
     id_usuario = models.ForeignKey('Usuario', on_delete=models.PROTECT, db_column='id_usuario')
@@ -87,7 +87,7 @@ class Servico(models.Model):
         unique_together = (('nome', 'classe'),)
 
     def __str__(self):
-        return f"servico {self.nome} ({self.classe})"
+        return f"{self.nome} ({self.classe})"
 
 class Pode_fazer(models.Model):
     id_perfil = models.ForeignKey('Perfil', on_delete=models.PROTECT, db_column='id_perfil')
@@ -140,7 +140,7 @@ class Exame(models.Model):
         unique_together = (('tipo', 'virus'),)
 
     def __str__(self):
-        return f"exame: {self.tipo} {self.virus}"
+        return f"{self.tipo} {self.virus}"
 
 class Realiza(models.Model):
     id_paciente = models.ForeignKey('Paciente', models.CASCADE, db_column='id_paciente')
@@ -166,7 +166,7 @@ class Amostra(models.Model):
         unique_together = (('id_paciente', 'id_exame', 'codigo_amostra'),)
 
     def __str__(self):
-        return f"amostra {self.codigo_amostra}: paciente:{self.id_paciente} - exame:{self.id_exame}"
+        return f"{self.codigo_amostra} - {self.id_exame}"
 
 class Usa(models.Model):
     id_servico = models.ForeignKey('Servico', on_delete=models.CASCADE, db_column='id_servico')

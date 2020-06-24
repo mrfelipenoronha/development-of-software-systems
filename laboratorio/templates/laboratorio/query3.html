@@ -1,0 +1,21 @@
+<h1>Listando serviços que podem ser utilizados por usuários</h1>
+
+{% if query3_result_list %}
+  <p>Total: {{query3_result_list | length}}</p>
+  
+  <table border="1">
+    <tr>
+      <th> id_servico </th>
+      <th> nome </th>
+    </tr>
+    {% for row in query3_result_list %}
+    <tr>
+      <td>{{row.id_servico}}</td>
+      <td>{{row.nome}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% else %}
+  <p>Sem resultados</p>
+{% endif %}

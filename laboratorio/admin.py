@@ -4,7 +4,8 @@ from .models import (
     Usuario, 
     Perfil, 
     Servico, 
-    Exame
+    Exame,
+    Pessoa
     )
 
 class AcessoInline(admin.TabularInline):
@@ -38,6 +39,11 @@ class ExameAdmin(admin.ModelAdmin):
     inlines = (UsaInline,)
     list_display = ('id_exame', 'tipo', 'virus')
 
+class PessoaAdmin(admin.ModelAdmin):
+    list_display = ('id_pessoa', 'nome', 'cpf', 'data_nasc')
+    list_display_links = ('id_pessoa', 'nome', 'cpf')
+
+admin.site.register(Pessoa, PessoaAdmin)
 admin.site.register(Usuario, UsuarioAdmin)
 admin.site.register(Perfil, PerfilAdmin)
 admin.site.register(Servico, ServicoAdmin)

@@ -1,0 +1,23 @@
+<h1>Listando em ordem crescente o total de serviços utilizados agrupados pelos tipos de serviços disponíveis e pelo perfil dos usuários</h1>
+
+{% if query5_result_list %}
+  <p>Total: {{query5_result_list | length}}</p>
+  
+  <table border="1">
+    <tr>
+      <th> classe </th>
+      <th> id_perfil </th>
+      <th> count </th>
+    </tr>
+    {% for row in query5_result_list %}
+    <tr>
+      <td>{{row.classe}}</td>
+      <td>{{row.id_perfil}}</td>
+      <td>{{row.count}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% else %}
+  <p>Sem resultados</p>
+{% endif %}

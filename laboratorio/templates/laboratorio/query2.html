@@ -1,0 +1,26 @@
+<h1>Listando os 5 exames realizados com maior eficiência</h1>
+
+{% if query2_result_list %}
+  
+  <table border="1">
+    <tr>
+      <th> id_exame</th>
+      <th> tipo</th>
+      <th> virus</th>
+      <th> data solicitação</th>
+      <th> data realização</th>
+    </tr>
+    {% for row in query2_result_list %}
+    <tr>
+      <td>{{row.id_exame}}</td>
+      <td>{{row.tipo}}</td>
+      <td>{{row.virus}}</td>
+      <td>{{row.data_solicitacao}}</td>
+      <td>{{row.data_realizacao}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% else %}
+  <p>Sem resultados</p>
+{% endif %}
