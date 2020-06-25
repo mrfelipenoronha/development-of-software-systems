@@ -4,6 +4,7 @@ FROM python:3
 
 # envoriment variables
 ENV PYTHONUNBUFFERED 1
+ENV DJANGO_SUPERUSER_PASSWORD admin
 
 RUN mkdir /code
 WORKDIR /code

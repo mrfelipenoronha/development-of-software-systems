@@ -4,12 +4,15 @@ This project is made for the discipline MAC0350 Introduction to the Development 
 
 ## How to setup docker
 
+If you want a zero effort deploy you can run `bash setup.sh`, this script will set everything you need.
+
+Alternatively you can follow the step-by-step deploy below:
+
 - Run `docker-compose build`. This will install all necessary dependencies for the project.
 - Run `docker-compose up` to the first run of the system/server (this is when postgresql container will be set). As soon as the process finishes your can issue `CTRL+C` to stop the server.
 - Run `docker-compose run web python manage.py migrate && docker-compose run web python manage.py makemigrations && docker-compose run web python manage.py migrate` to setup database tables.
 - Create a superuser for the system with the command `docker-compose run web python manage.py createsuperuser`.
 - That's it! Now just run `docker-compose up` and access [http://0.0.0.0:8000/laboratorio](http://0.0.0.0:8000/laboratorio).
-
 - Additionally you can run `cat ./data.sql | docker exec -i /labjef_db_1 psql -U postgres -d postgres` to populate the database with default data.
 
 ## Viewing database
