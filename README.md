@@ -12,7 +12,7 @@ This project is made for the discipline MAC0350 Introduction to the Development 
 
 - Additionally you can run `cat ./data.sql | docker exec -i /labjef_db_1 psql -U postgres -d postgres` to populate the database with default data.
 
-## Visualizing database
+## Viewing database
 
 ![relational model](relational.png)
 
