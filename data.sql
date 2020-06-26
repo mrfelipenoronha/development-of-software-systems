@@ -1,5 +1,3 @@
--- cat ./data.sql | docker exec -i /labjef_db_1 psql -U postgres -d postgres
-
 -- INTO USUARIO
 INSERT INTO laboratorio_pessoa (id_pessoa, nome, cpf, data_nasc, email, telefone, endereco)
 VALUES (1, 'Daniela Favero', '45755046611', TO_DATE('18/05/2000', 'DD/MM/YYYY'), 'gabrielribeirorodrigues@fleckens.hu', '2181136578', 'Rua Dezesseis 637');

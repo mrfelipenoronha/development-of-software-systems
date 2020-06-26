@@ -13,7 +13,7 @@ Alternatively you can follow the step-by-step deploy below:
 - Run `docker-compose run web python manage.py migrate && docker-compose run web python manage.py makemigrations && docker-compose run web python manage.py migrate` to setup database tables.
 - Create a superuser for the system with the command `docker-compose run web python manage.py createsuperuser`.
 - That's it! Now just run `docker-compose up` and access [http://0.0.0.0:8000/laboratorio](http://0.0.0.0:8000/laboratorio).
-- Additionally you can run `cat ./data.sql | docker exec -i /labjef_db_1 psql -U postgres -d postgres` to populate the database with default data.
+- Additionally you can run `cat ./data.sql | docker exec -i development-of-software-systems_db_1 psql -U postgres -d postgres` to populate the database with default data.
 
 ## Viewing database
 
